@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Arcos Mexican Restaurant | Lula, GA</title>
+    <style>
+        /* === BASE STYLES & COLOR PALETTE === */
+        :root {
+            --primary-red: #d32f2f;
+            --primary-orange: #f57c00;
+            --dark-bg: #212121;
+            --light-bg: #fff8e1; /* Warm cream color */
+            --text-main: #333333;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h1 {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        /* === HERO SECTION === */
+        header {
+            background: linear-gradient(rgba(33, 33, 33, 0.8), rgba(33, 33, 33, 0.8)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-orange);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        /* === MENU SECTION === */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin: 3rem 0 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+
+        .menu-category h3 {
+            font-size: 1.8rem;
+            color: var(--dark-bg);
+            border-bottom: 3px solid var(--primary-orange);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .menu-item h4 {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* === REVIEWS SLIDESHOW SECTION === */
+        .reviews-section {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .reviews-section .section-title {
+            color: var(--white);
+            margin-top: 0;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .review-slide {
+            display: none;
+            animation: fade 1.5s;
+        }
+
+        .review-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Slideshow Animation */
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* Slideshow controls */
+        .dot-container {
+            margin-top: 20px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: var(--white);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>Los Arcos</h1>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h2>Welcome to Los Arcos</h2>
+        <p>Authentic Mexican Restaurant in Lula, Georgia. Experience the vibrant flavors, fresh ingredients, and welcoming atmosphere.</p>
+    </header>
+
+    <section id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-container">
+
+            <div class="menu-category">
+                <h3>Appetizers</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Cheese Dip</h4></div>
+                    <div class="menu-item"><h4>Bean Dip</h4></div>
+                    <div class="menu-item"><h4>Chunky Guacamole</h4></div>
+                    <div class="menu-item"><h4>Jalapeno Poppers (6)</h4></div>
+                    <div class="menu-item"><h4>Choriqueso</h4></div>
+                    <div class="menu-item"><h4>Spinach Dip</h4></div>
+                    <div class="menu-item"><h4>Chicken Wings</h4><p>Ask for wings flavors</p></div>
+                    <div class="menu-item"><h4>Chorizo Dip</h4></div>
+                    <div class="menu-item"><h4>Papas Locas</h4></div>
+                    <div class="menu-item"><h4>Los Arcos Sampler</h4></div>
+                    <div class="menu-item"><h4>Cheese Sticks (6)</h4></div>
+                    <div class="menu-item"><h4>Shrimp Appetizer (12)</h4></div>
+                    <div class="menu-item"><h4>Street Corn</h4></div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Soups & More</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Vegetable Soup</h4><p>Rice, carrots, broccoli, cauliflower and pico de gallo.</p></div>
+                    <div class="menu-item"><h4>Chicken Soup</h4><p>Shredded chicken, pico de gallo, rice, avocado and lime.</p></div>
+                    <div class="menu-item"><h4>Caldo De Mariscos</h4><p>Fish and shrimp with carrots, broccoli and cauliflower. Served with rice and tortillas.</p></div>
+                    <div class="menu-item"><h4>Shrimp Cocktail</h4><p>Mexican version with pico de gallo, avocado, in our homemade sweet cocktail sauce. Served chilled.</p></div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>House Combinations</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Enchiladas Supreme</h4><p>4 enchiladas: chicken, beef, bean and cheese enchilada topped with red sauce, lettuce, tomatoes, guacamole and sour cream.</p></div>
+                    <div class="menu-item"><h4>Enchiladas Rancheras</h4><p>3 cheese enchiladas topped with carnitas, red sauce, lettuce, tomatoes, guacamole, shredded cheese and sour cream.</p></div>
+                    <div class="menu-item"><h4>Taquitos Mexicanos</h4><p>4 fried corn tortillas, 2 shredded chicken and 2 ground beef. Served with guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Authentic Chiles Poblanos</h4><p>Cheese stuffed poblano pepper, battered and fried. Served with rice, salad and tortillas. Shredded chicken or ground beef.</p></div>
+                    <div class="menu-item"><h4>Enchiladas Verdes</h4><p>3 enchiladas, 2 chicken, and 1 cheese topped with cheese and green sauce served with lettuce, tomatoes, avocados, sour cream and rice.</p></div>
+                    <div class="menu-item"><h4>Enchiladas Mexicanas</h4><p>3 cheese enchiladas topped with shredded pork with onions, tomatoes and peppers. Served with rice and tossed salad.</p></div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>From The Grill</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Los Arcos Special</h4><p>Grilled chicken & shrimp cooked with onions and shredded cheese. Served with rice or beans, guacamole salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>Carne Asada</h4><p>Roast beef, with beans, guacamole salad, and tortillas.</p></div>
+                    <div class="menu-item"><h4>Steak Ranchero</h4><p>8oz rib-eye topped with bell pepper, onions, tomato served with rice, beans and guaca salad.</p></div>
+                    <div class="menu-item"><h4>Pollo Asado</h4><p>8oz grilled chicken breast with onions, served with rice, lettuce, tomatoes, shredded cheese and tortillas.</p></div>
+                    <div class="menu-item"><h4>Pollo Loco</h4><p>8oz grilled chicken breast with onions, mushrooms and cheese sauce, served with rice, tossed salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>A.c.p. (Arroz Con Pollo)</h4><p>Grilled chicken with rice topped with cheese.</p></div>
+                    <div class="menu-item"><h4>Texas Rice</h4><p>Grilled chicken, steak and shrimp served on a bed of rice covered in cheese sauce.</p></div>
+                    <div class="menu-item"><h4>Molcajete</h4><p>Grilled steak, chicken, shrimp and chorizo cooked with onions, cactus, green sauce and mozzarella cheese, served in a lava rock bowl with rice or beans and tortillas.</p></div>
+                    </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Fajitas</h3>
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Chicken Or Steak</h4><p>Cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Texas</h4><p>Chicken, shrimp & steak cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Fajitas Los Arcos</h4><p>Chicken, shrimp, steak, pork and chorizo cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Pineapple Fajitas</h4><p>Chicken, shrimp, vegetables, fresh pineapple and mozzarella cheese. Cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section">
+        <h2 class="section-title">What Our Guests Say</h2>
+        <div class="slideshow-container">
+            
+            <div class="review-slide">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Food was good... Service was terrific and very attentive, definitely hard working staff. Nice little authentic feel to this establishment. Overall it was a great experience and I will return."</p>
+                <p class="review-author">- Mark Petit</p>
+            </div>
+
+            <div class="review-slide">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Amazing place! The food was hot, the beer was cold. Amazing chips and salsa. The waiter was super friendly. Great atmosphere."</p>
+                <p class="review-author">- Bret</p>
+            </div>
+
+            <div class="review-slide">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"First time in town, and we're recommended by locals to try this place out. Cozy spot with good food and seasoning... we were attended quickly when we needed something!"</p>
+                <p class="review-author">- Sergio Morales</p>
+            </div>
+
+            <div class="review-slide">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Los Arcos in Lula is such a gem! The food and drinks are always delicious and fresh, and the service is top-notch every time I visit. The owner is incredibly sweet..."</p>
+                <p class="review-author">- Justin Bennett</p>
+            </div>
+
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span> 
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>Los Arcos Mexican Restaurant | 6031 Main St, Lula, GA 30554</p>
+        <p>&copy; 2026 Los Arcos Mexican Restaurant. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        let slideTimer;
+
+        showSlides(slideIndex);
+
+        // Auto play the slideshow
+        function autoPlay() {
+            slideTimer = setInterval(function(){
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 5000); // Changes slide every 5 seconds
+        }
+
+        autoPlay(); // Start auto play
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            clearInterval(slideTimer); // Reset timer when manually clicked
+            showSlides(slideIndex = n);
+            autoPlay(); // Restart timer
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("review-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+</body>
+</html>
