@@ -4,71 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Los Arcos Mexican Restaurant | Lula, GA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* === BASE STYLES & COLOR PALETTE === */
         :root {
-            --primary-red: #d32f2f;
-            --primary-orange: #f57c00;
-            --dark-bg: #212121;
-            --light-bg: #fff8e1; /* Warm cream color */
+            --primary-red: #C62828;
+            --primary-dark: #1A1A1A;
+            --accent-gold: #FFB300;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
             --text-main: #333333;
-            --white: #ffffff;
+            --text-muted: #666666;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
             background-color: var(--light-bg);
             color: var(--text-main);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* === NAVIGATION === */
         nav {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 1rem 2rem;
+            background-color: var(--primary-dark);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         nav h1 {
-            color: var(--primary-orange);
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav h1 span {
+            color: var(--accent-gold);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         nav a {
             color: var(--white);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--primary-red);
+            color: var(--accent-gold);
         }
 
         /* === HERO SECTION === */
         header {
-            background: linear-gradient(rgba(33, 33, 33, 0.8), rgba(33, 33, 33, 0.8)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -79,178 +88,306 @@
         }
 
         header h2 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 10px;
-            color: var(--primary-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         header p {
             font-size: 1.2rem;
             max-width: 600px;
+            margin-bottom: 30px;
+            color: #E0E0E0;
         }
 
-        /* === MENU SECTION === */
+        .cta-btn {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #B71C1C;
+        }
+
+        /* === SECTION TITLES === */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            text-align: center;
             color: var(--primary-red);
-            margin: 3rem 0 1.5rem;
+            font-weight: 600;
             text-transform: uppercase;
-        }
-
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
-
-        .menu-category {
+            letter-spacing: 1.5px;
             margin-bottom: 3rem;
         }
 
-        .menu-category h3 {
-            font-size: 1.8rem;
-            color: var(--dark-bg);
-            border-bottom: 3px solid var(--primary-orange);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        /* === DROPDOWN MENU SECTION (ACCORDION) === */
+        .menu-section {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px 25px;
+            background-color: var(--white);
+            border: none;
+            text-align: left;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #f1f1f1;
+        }
+
+        .accordion-header.active {
+            color: var(--primary-red);
+            border-bottom: 1px solid #eee;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .active .icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: #fafafa;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
+            padding: 25px;
         }
 
         .menu-item {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
         }
 
         .menu-item h4 {
-            color: var(--primary-red);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
         }
 
         .menu-item p {
-            font-size: 0.95rem;
-            color: #555;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        /* === REVIEWS SLIDESHOW SECTION === */
-        .reviews-section {
-            background-color: var(--primary-red);
+        /* === INFO SECTION (HOURS, LOCATION, PHONE) === */
+        .info-section {
+            background-color: var(--primary-dark);
             color: var(--white);
-            padding: 4rem 20px;
+            padding: 4rem 5%;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .reviews-section .section-title {
-            color: var(--white);
-            margin-top: 0;
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .info-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .info-card p {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        .info-card a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-card a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* === REVIEWS SLIDESHOW === */
+        .reviews-section {
+            padding: 5rem 5%;
+            background-color: var(--light-bg);
         }
 
         .slideshow-container {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
-            background: rgba(0,0,0,0.2);
-            padding: 40px;
+            background: var(--white);
+            padding: 50px;
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
         }
 
         .review-slide {
             display: none;
-            animation: fade 1.5s;
+            animation: fade 1s;
         }
 
         .review-text {
             font-size: 1.2rem;
             font-style: italic;
+            color: var(--text-muted);
             margin-bottom: 20px;
+            line-height: 1.8;
         }
 
         .review-author {
-            font-weight: bold;
-            color: var(--primary-orange);
+            font-weight: 700;
+            color: var(--primary-dark);
             font-size: 1.1rem;
         }
 
         .stars {
-            color: #FFD700;
+            color: var(--accent-gold);
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
 
-        /* Slideshow Animation */
         @keyframes fade {
             from {opacity: .4} 
             to {opacity: 1}
         }
 
-        /* Slideshow controls */
         .dot-container {
-            margin-top: 20px;
+            margin-top: 30px;
+            text-align: center;
         }
 
         .dot {
             cursor: pointer;
-            height: 12px;
-            width: 12px;
+            height: 10px;
+            width: 10px;
             margin: 0 5px;
-            background-color: rgba(255,255,255,0.5);
+            background-color: #ccc;
             border-radius: 50%;
             display: inline-block;
-            transition: background-color 0.6s ease;
+            transition: background-color 0.3s ease;
         }
 
-        .active, .dot:hover {
-            background-color: var(--white);
+        .active-dot, .dot:hover {
+            background-color: var(--primary-red);
         }
 
         /* === FOOTER === */
         footer {
-            background-color: var(--dark-bg);
-            color: var(--white);
+            background-color: #111;
+            color: #777;
             text-align: center;
             padding: 2rem;
-            margin-top: auto;
+            font-size: 0.9rem;
         }
 
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h2 { font-size: 2.8rem; }
+            nav { flex-direction: column; gap: 1rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <h1>Los Arcos</h1>
+        <h1>Los <span>Arcos</span></h1>
         <ul>
             <li><a href="#menu">Menu</a></li>
+            <li><a href="#info">Location & Hours</a></li>
             <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <header>
-        <h2>Welcome to Los Arcos</h2>
-        <p>Authentic Mexican Restaurant in Lula, Georgia. Experience the vibrant flavors, fresh ingredients, and welcoming atmosphere.</p>
+        <h2>Authentic Flavor</h2>
+        <p>Experience the vibrant tastes and welcoming atmosphere of Lula's favorite Mexican restaurant.</p>
+        <a href="#menu" class="cta-btn">Explore Menu</a>
     </header>
 
-    <section id="menu">
-        <h2 class="section-title">Our Menu</h2>
-        <div class="menu-container">
+    <section id="info" class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📍 Location</h3>
+                <p>6031 Main St</p>
+                <p>Lula, GA 30554</p>
+                <p>United States</p>
+            </div>
+            <div class="info-card">
+                <h3>🕒 Hours</h3>
+                <p><strong>Mon - Sat:</strong> 11:00 AM - 9:00 PM</p>
+                <p><strong>Sunday:</strong> 12:00 PM - 8:00 PM</p>
+            </div>
+            <div class="info-card">
+                <h3>📞 Contact</h3>
+                <p><a href="tel:+17706917045">+1 (770) 691-7045</a></p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Call us for takeout or reservations!</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="menu-category">
-                <h3>Appetizers</h3>
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Our Menu</h2>
+        <p class="section-subtitle">Discover our dishes</p>
+
+        <div class="accordion-item">
+            <button class="accordion-header">Appetizers <span class="icon">+</span></button>
+            <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Cheese Dip</h4></div>
                     <div class="menu-item"><h4>Bean Dip</h4></div>
@@ -267,9 +404,11 @@
                     <div class="menu-item"><h4>Street Corn</h4></div>
                 </div>
             </div>
+        </div>
 
-            <div class="menu-category">
-                <h3>Soups & More</h3>
+        <div class="accordion-item">
+            <button class="accordion-header">Soups & More <span class="icon">+</span></button>
+            <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Vegetable Soup</h4><p>Rice, carrots, broccoli, cauliflower and pico de gallo.</p></div>
                     <div class="menu-item"><h4>Chicken Soup</h4><p>Shredded chicken, pico de gallo, rice, avocado and lime.</p></div>
@@ -277,9 +416,11 @@
                     <div class="menu-item"><h4>Shrimp Cocktail</h4><p>Mexican version with pico de gallo, avocado, in our homemade sweet cocktail sauce. Served chilled.</p></div>
                 </div>
             </div>
+        </div>
 
-            <div class="menu-category">
-                <h3>House Combinations</h3>
+        <div class="accordion-item">
+            <button class="accordion-header">House Combinations <span class="icon">+</span></button>
+            <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Enchiladas Supreme</h4><p>4 enchiladas: chicken, beef, bean and cheese enchilada topped with red sauce, lettuce, tomatoes, guacamole and sour cream.</p></div>
                     <div class="menu-item"><h4>Enchiladas Rancheras</h4><p>3 cheese enchiladas topped with carnitas, red sauce, lettuce, tomatoes, guacamole, shredded cheese and sour cream.</p></div>
@@ -289,36 +430,50 @@
                     <div class="menu-item"><h4>Enchiladas Mexicanas</h4><p>3 cheese enchiladas topped with shredded pork with onions, tomatoes and peppers. Served with rice and tossed salad.</p></div>
                 </div>
             </div>
+        </div>
 
-            <div class="menu-category">
-                <h3>From The Grill</h3>
+        <div class="accordion-item">
+            <button class="accordion-header">From The Grill <span class="icon">+</span></button>
+            <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Los Arcos Special</h4><p>Grilled chicken & shrimp cooked with onions and shredded cheese. Served with rice or beans, guacamole salad and tortillas.</p></div>
                     <div class="menu-item"><h4>Carne Asada</h4><p>Roast beef, with beans, guacamole salad, and tortillas.</p></div>
                     <div class="menu-item"><h4>Steak Ranchero</h4><p>8oz rib-eye topped with bell pepper, onions, tomato served with rice, beans and guaca salad.</p></div>
                     <div class="menu-item"><h4>Pollo Asado</h4><p>8oz grilled chicken breast with onions, served with rice, lettuce, tomatoes, shredded cheese and tortillas.</p></div>
-                    <div class="menu-item"><h4>Pollo Loco</h4><p>8oz grilled chicken breast with onions, mushrooms and cheese sauce, served with rice, tossed salad and tortillas.</p></div>
-                    <div class="menu-item"><h4>A.c.p. (Arroz Con Pollo)</h4><p>Grilled chicken with rice topped with cheese.</p></div>
-                    <div class="menu-item"><h4>Texas Rice</h4><p>Grilled chicken, steak and shrimp served on a bed of rice covered in cheese sauce.</p></div>
                     <div class="menu-item"><h4>Molcajete</h4><p>Grilled steak, chicken, shrimp and chorizo cooked with onions, cactus, green sauce and mozzarella cheese, served in a lava rock bowl with rice or beans and tortillas.</p></div>
                     </div>
             </div>
-
-            <div class="menu-category">
-                <h3>Fajitas</h3>
+        </div>
+        
+        <div class="accordion-item">
+            <button class="accordion-header">Fajitas <span class="icon">+</span></button>
+            <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Chicken Or Steak</h4><p>Cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
-                    <div class="menu-item"><h4>Texas</h4><p>Chicken, shrimp & steak cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
-                    <div class="menu-item"><h4>Fajitas Los Arcos</h4><p>Chicken, shrimp, steak, pork and chorizo cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
-                    <div class="menu-item"><h4>Pineapple Fajitas</h4><p>Chicken, shrimp, vegetables, fresh pineapple and mozzarella cheese. Cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Texas</h4><p>Chicken, shrimp & steak cooked with onions, tomatoes and peppers.</p></div>
+                    <div class="menu-item"><h4>Tropical</h4><p>Chicken, shrimp, steak, pork, pineapple & mozzarella cheese cooked with onions, tomatoes and peppers.</p></div>
+                    <div class="menu-item"><h4>Veggie Fajitas</h4><p>Onions, tomatoes, peppers, mushrooms, spinach, broccoli, and cauliflower.</p></div>
                 </div>
             </div>
-
         </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">Quesadillas <span class="icon">+</span></button>
+            <div class="accordion-content">
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Quesadilla Especial</h4><p>Choice of shredded chicken or beef served with lettuce, tomato sour cream and guacamole.</p></div>
+                    <div class="menu-item"><h4>Fajita Special Quesadilla</h4><p>Grilled chicken or steak fajita meat, served with guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Quesadilla Grande</h4><p>A 10 inch quesadilla with your choice of fajita chicken or steak. Served with rice and beans.</p></div>
+                    <div class="menu-item"><h4>Los Arcos Especial Quesadilla</h4><p>Grilled chicken, chorizo, bacon, ham and onions, pineapple and poblano pepper. Topped with cheese sauce.</p></div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section id="reviews" class="reviews-section">
-        <h2 class="section-title">What Our Guests Say</h2>
+        <h2 class="section-title">What Locals Are Saying</h2>
+        <p class="section-subtitle">Real 5-Star Reviews</p>
         <div class="slideshow-container">
             
             <div class="review-slide">
@@ -354,32 +509,51 @@
         </div>
     </section>
 
-    <footer id="contact">
-        <p>Los Arcos Mexican Restaurant | 6031 Main St, Lula, GA 30554</p>
+    <footer>
         <p>&copy; 2026 Los Arcos Mexican Restaurant. All Rights Reserved.</p>
     </footer>
 
     <script>
+        // --- ACCORDION MENU LOGIC ---
+        const accordions = document.querySelectorAll('.accordion-header');
+
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                // Toggle active class on header
+                this.classList.toggle('active');
+
+                // Get the content div
+                const content = this.nextElementSibling;
+
+                // Animate opening/closing
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    // Set max-height to scrollHeight to allow smooth opening
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } 
+            });
+        });
+
+        // --- SLIDESHOW LOGIC ---
         let slideIndex = 1;
         let slideTimer;
 
         showSlides(slideIndex);
 
-        // Auto play the slideshow
         function autoPlay() {
             slideTimer = setInterval(function(){
                 slideIndex++;
                 showSlides(slideIndex);
-            }, 5000); // Changes slide every 5 seconds
+            }, 6000); // 6 seconds per slide
         }
 
-        autoPlay(); // Start auto play
+        autoPlay(); 
 
-        // Thumbnail image controls
         function currentSlide(n) {
-            clearInterval(slideTimer); // Reset timer when manually clicked
+            clearInterval(slideTimer);
             showSlides(slideIndex = n);
-            autoPlay(); // Restart timer
+            autoPlay();
         }
 
         function showSlides(n) {
@@ -394,11 +568,11 @@
                 slides[i].style.display = "none";  
             }
             for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+                dots[i].className = dots[i].className.replace(" active-dot", "");
             }
             
             slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
+            dots[slideIndex-1].className += " active-dot";
         }
     </script>
 </body>
