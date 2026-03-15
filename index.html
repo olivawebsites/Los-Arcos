@@ -30,7 +30,7 @@
             scroll-behavior: smooth;
         }
 
-        /* === TOP CONTACT BAR === */
+        /* === TOP BAR (Refined) === */
         .top-bar {
             background-color: var(--dark-gray);
             color: var(--white);
@@ -46,7 +46,7 @@
             text-decoration: none;
         }
 
-        /* === MAIN NAVIGATION === */
+        /* === NEW ATTENTION-GRABBING HEADER & LOGO === */
         nav {
             background-color: var(--white);
             padding: 1.2rem 5%;
@@ -59,11 +59,15 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
+        /* The refined, thematic logo */
         nav .logo {
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--dark-gray);
             text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
         }
 
         nav .logo span {
@@ -74,6 +78,7 @@
             list-style: none;
             display: flex;
             gap: 2rem;
+            margin-right: 2rem; /* Give space before the CTA */
         }
 
         nav a {
@@ -89,11 +94,16 @@
             color: var(--primary-red);
         }
 
+        /* Right CTA (Modern & Attention-Grabbing) */
         .btn-outline {
             border: 2px solid var(--primary-red);
             padding: 10px 24px;
             color: var(--primary-red);
             border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
 
         .btn-outline:hover {
@@ -101,7 +111,7 @@
             color: var(--white);
         }
 
-        /* === HERO SECTION === */
+        /* === HERO SECTION (Refined) === */
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
             height: 75vh;
@@ -119,6 +129,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             max-width: 800px;
+            letter-spacing: -1px;
         }
 
         header p {
@@ -143,7 +154,7 @@
             background-color: #b71c1c;
         }
 
-        /* === TYPOGRAPHY & TITLES === */
+        /* === ABOUT & STEPS SECTION === */
         .subtitle {
             color: var(--primary-red);
             font-size: 1rem;
@@ -160,8 +171,7 @@
             margin-bottom: 40px;
         }
 
-        /* === ABOUT US SECTION === */
-        .about-section {
+        .about-section, .steps-section {
             padding: 6rem 5%;
             background-color: var(--white);
             display: flex;
@@ -170,14 +180,18 @@
             text-align: center;
         }
 
-        .about-section p {
+        .steps-section {
+            background-color: var(--gray-bg);
+        }
+
+        .about-section p, .steps-grid p {
             max-width: 800px;
             font-size: 1.1rem;
             color: #666;
             margin-bottom: 3rem;
         }
 
-        .stats-grid {
+        .stats-grid, .steps-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
@@ -185,7 +199,7 @@
             width: 100%;
         }
 
-        .stat h3 {
+        .stat h3, .step h2 {
             font-size: 2.5rem;
             color: var(--dark-gray);
             border-bottom: 3px solid var(--primary-red);
@@ -193,40 +207,22 @@
             margin-bottom: 10px;
         }
 
-        .stat p {
+        .step h2 {
+            color: rgba(211, 47, 47, 0.2);
+            border-bottom: none;
+        }
+
+        .stat p, .step h4 {
             font-size: 1rem;
             font-weight: 600;
             text-transform: uppercase;
             margin: 0;
         }
 
-        /* === 3 STEPS SECTION === */
-        .steps-section {
-            padding: 5rem 5%;
-            background-color: var(--gray-bg);
-            text-align: center;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-            margin-top: 40px;
-        }
-
-        .step h2 {
-            font-size: 3rem;
-            color: rgba(211, 47, 47, 0.2); /* Faded red number */
-            font-weight: 800;
-            margin-bottom: -15px;
-        }
-
-        .step h4 {
-            font-size: 1.3rem;
-            color: var(--dark-gray);
-            margin-bottom: 15px;
+        .step p {
+            font-size: 0.95rem;
+            color: #777;
+            margin-top: 10px;
         }
 
         /* === DROPDOWN MENU SECTION === */
@@ -404,8 +400,9 @@
         @media (max-width: 768px) {
             .top-bar { flex-direction: column; gap: 10px; text-align: center; }
             nav { flex-direction: column; gap: 15px; }
+            nav ul { margin-right: 0; }
             header h2 { font-size: 2.5rem; }
-            .stats-grid { grid-template-columns: 1fr; gap: 20px; }
+            .stats-grid, .steps-grid { grid-template-columns: 1fr; gap: 20px; }
         }
     </style>
 </head>
@@ -417,17 +414,20 @@
     </div>
 
     <nav>
-        <div class="logo">Los <span>Arcos</span></div>
+        <div class="logo">
+            <span style="font-size: 1.4rem;">LOS</span>
+            <span style="display: block; font-size: 2rem; color: var(--dark-gray); font-weight: 800;">ARCOS</span>
+        </div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#reviews">Reviews</a></li>
         </ul>
-        <a href="#menu" class="btn-outline">View Menu</a>
+        <a href="#menu" class="btn-outline">VIEW MENU</a>
     </nav>
 
     <header>
-        <h2>Authentic Mexican Flavor in Lula, GA</h2>
+        <h2>AUTHENTIC MEXICAN FLAVOR IN LULA, GA</h2>
         <p>From sizzling fajitas to fresh guacamole — experience the real taste of Mexico, made fresh every day.</p>
         <a href="#menu" class="btn-primary">Explore Menu</a>
     </header>
@@ -484,11 +484,16 @@
             <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Cheese Dip</h4></div>
+                    <div class="menu-item"><h4>Bean Dip</h4></div>
                     <div class="menu-item"><h4>Chunky Guacamole</h4></div>
                     <div class="menu-item"><h4>Jalapeno Poppers (6)</h4></div>
                     <div class="menu-item"><h4>Choriqueso</h4></div>
+                    <div class="menu-item"><h4>Spinach Dip</h4></div>
                     <div class="menu-item"><h4>Chicken Wings</h4><p>Ask for wings flavors</p></div>
+                    <div class="menu-item"><h4>Chorizo Dip</h4></div>
+                    <div class="menu-item"><h4>Papas Locas</h4></div>
                     <div class="menu-item"><h4>Los Arcos Sampler</h4></div>
+                    <div class="menu-item"><h4>Cheese Sticks (6)</h4></div>
                     <div class="menu-item"><h4>Shrimp Appetizer (12)</h4></div>
                     <div class="menu-item"><h4>Street Corn</h4></div>
                 </div>
@@ -501,7 +506,8 @@
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Vegetable Soup</h4><p>Rice, carrots, broccoli, cauliflower and pico de gallo.</p></div>
                     <div class="menu-item"><h4>Chicken Soup</h4><p>Shredded chicken, pico de gallo, rice, avocado and lime.</p></div>
-                    <div class="menu-item"><h4>Shrimp Cocktail</h4><p>Mexican version with pico de gallo, avocado, in our homemade sweet cocktail sauce.</p></div>
+                    <div class="menu-item"><h4>Caldo De Mariscos</h4><p>Fish and shrimp with carrots, broccoli and cauliflower. Served with rice and tortillas.</p></div>
+                    <div class="menu-item"><h4>Shrimp Cocktail</h4><p>Mexican version with pico de gallo, avocado, in our homemade sweet cocktail sauce. Served chilled.</p></div>
                 </div>
             </div>
         </div>
@@ -511,8 +517,11 @@
             <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Enchiladas Supreme</h4><p>4 enchiladas: chicken, beef, bean and cheese enchilada topped with red sauce, lettuce, tomatoes, guacamole and sour cream.</p></div>
+                    <div class="menu-item"><h4>Enchiladas Rancheras</h4><p>3 cheese enchiladas topped with carnitas, red sauce, lettuce, tomatoes, guacamole, shredded cheese and sour cream.</p></div>
                     <div class="menu-item"><h4>Taquitos Mexicanos</h4><p>4 fried corn tortillas, 2 shredded chicken and 2 ground beef. Served with guacamole salad.</p></div>
-                    <div class="menu-item"><h4>Authentic Chiles Poblanos</h4><p>Cheese stuffed poblano pepper, battered and fried. Served with rice, salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>Authentic Chiles Poblanos</h4><p>Cheese stuffed poblano pepper, battered and fried. Served with rice, salad and tortillas. Shredded chicken or ground beef.</p></div>
+                    <div class="menu-item"><h4>Enchiladas Verdes</h4><p>3 enchiladas, 2 chicken, and 1 cheese topped with cheese and green sauce served with lettuce, tomatoes, avocados, sour cream and rice.</p></div>
+                    <div class="menu-item"><h4>Enchiladas Mexicanas</h4><p>3 cheese enchiladas topped with shredded pork with onions, tomatoes and peppers. Served with rice and tossed salad.</p></div>
                 </div>
             </div>
         </div>
@@ -522,9 +531,25 @@
             <div class="accordion-content">
                 <div class="menu-grid">
                     <div class="menu-item"><h4>Los Arcos Special</h4><p>Grilled chicken & shrimp cooked with onions and shredded cheese. Served with rice or beans, guacamole salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>Carne Asada</h4><p>Roast beef, with beans, guacamole salad, and tortillas.</p></div>
                     <div class="menu-item"><h4>Steak Ranchero</h4><p>8oz rib-eye topped with bell pepper, onions, tomato served with rice, beans and guaca salad.</p></div>
+                    <div class="menu-item"><h4>Pollo Asado</h4><p>8oz grilled chicken breast with onions, served with rice, lettuce, tomatoes, shredded cheese and tortillas.</p></div>
+                    <div class="menu-item"><h4>Pollo Loco</h4><p>8oz grilled chicken breast with onions, mushrooms and cheese sauce, served with rice, tossed salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>Pollo Yazmin</h4><p>Delicious chicken breast with onions and spinach, served with rice and guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Pollo Hawaiiana</h4><p>Delicious chicken breast with sliced pineapple, ham and cheese.</p></div>
+                    <div class="menu-item"><h4>Chori Pollo</h4><p>Grilled chicken breast with mexican sausage with onions, topped with cheese sauce, served with rice, guacamole salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>A.c.p. (Arroz Con Pollo)</h4><p>Grilled chicken with rice topped with cheese.</p></div>
                     <div class="menu-item"><h4>Texas Rice</h4><p>Grilled chicken, steak and shrimp served on a bed of rice covered in cheese sauce.</p></div>
-                    <div class="menu-item"><h4>Molcajete</h4><p>Grilled steak, chicken, shrimp and chorizo cooked with onions, cactus, green sauce and mozzarella cheese.</p></div>
+                    <div class="menu-item"><h4>Pollo Epecial</h4><p>Grilled chicken breast, topped with bacon, ham, onions and fresh pineapple, served with rice and salad.</p></div>
+                    <div class="menu-item"><h4>Carnitas</h4><p>Sliced pork with rice, beans and flour tortillas.</p></div>
+                    <div class="menu-item"><h4>Molcajete</h4><p>Grilled steak, chicken, shrimp and chorizo cooked with onions, cactus, green sauce and mozzarella cheese, served in a lava rock bowl with rice or beans and tortillas.</p></div>
+                    <div class="menu-item"><h4>California Burrito</h4><p>10 inch tortillas stuffed with your choice of fajita chicken or steak, topped with cheese and red sauce. Served with tossed salad, sour cream and your choice of rice or beans.</p></div>
+                    <div class="menu-item"><h4>Tex-Mex Burrito</h4><p>10 inch burrito with grilled chicken, shrimp and steak, topped with cheese sauce, red sauce and salsa verde. Served with rice and guacamole salad.</p></div>
+                    <div class="menu-item"><h4>Rib-Eye & Shrimp</h4><p>10oz rib-eye with 6 grilled shrimp smothered in cheese sauce. Served with rice, guacamole salad and tortillas.</p></div>
+                    <div class="menu-item"><h4>Parrillada</h4><p>Grill chicken, breast steak filet, mexican sausage, and vegetables. Served with rice, beans, and tortillas.</p></div>
+                    <div class="menu-item"><h4>El Barco</h4><p>Grilled chicken, steak and shrimp smothered in cheese sauce, served with pico de gallo and tortillas.</p></div>
+                    <div class="menu-item"><h4>Ryb Eye Poblano</h4><p>Rib eye topped with vegetables, and melted cheese. Served with beans and a poblano pepper.</p></div>
+                    <div class="menu-item"><h4>Steak Chefs Special</h4><p>Roasted beef topped with six shrimp, onions and peppers, served with rice and a fried egg.</p></div>
                 </div>
             </div>
         </div>
@@ -533,9 +558,32 @@
             <button class="accordion-header">Fajitas <span class="icon">+</span></button>
             <div class="accordion-content">
                 <div class="menu-grid">
-                    <div class="menu-item"><h4>Chicken Or Steak</h4><p>Cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad.</p></div>
-                    <div class="menu-item"><h4>Fajitas Los Arcos</h4><p>Chicken, shrimp, steak, pork and chorizo cooked with onions, tomatoes and peppers.</p></div>
-                    <div class="menu-item"><h4>Veggie Fajitas</h4><p>Onions, tomatoes, peppers, mushrooms, spinach, broccoli, and cauliflower.</p></div>
+                    <div class="menu-item"><h4>Chicken Or Steak</h4><p>Your choice of chicken or steak cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Mixed</h4><p>Chicken & steak cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Texas</h4><p>Chicken, shrimp & steak cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Shrimp</h4><p>Shrimp cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Tropical</h4><p>Chicken, shrimp, steak, pork, pineapple & mozzarella cheese cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Fajitas Los Arcos</h4><p>Chicken, shrimp, steak, pork and chorizo cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Seafood</h4><p>Fish, shrimp and scallops cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Veggie Fajitas</h4><p>Onions, tomatoes, peppers, mushrooms, spinach, broccoli, and cauliflower. Served with beans, tortillas and guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Pineapple Fajitas</h4><p>Chicken, shrimp, vegetables, fresh pineapple and mozzarella cheese. Cooked with onions, tomatoes and peppers, served with beans, tortillas and guacamole salad. (For 1)</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">Quesadillas <span class="icon">+</span></button>
+            <div class="accordion-content">
+                <div class="menu-grid">
+                    <div class="menu-item"><h4>Quesadilla Especial</h4><p>Choice of shredded chicken or beef served with lettuce, tomato sour cream and guacamole. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Quesadilla Mexicana</h4><p>Same as quesadilla special but with choice of rice or beans. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Fajita Special Quesadilla</h4><p>Grilled chicken or steak fajita meat, served with guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Spinach Special Quesadilla</h4><p>Grilled spinach with onions and tomatoes. Served with guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Mushrooms Special Quesadilla</h4><p>Grilled mushrooms with onions and tomatoes. Served with guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Texas Special Quesadilla</h4><p>Chicken, shrimp & steak cooked with onions, peppers and tomato. Served with guacamole salad. (For 1, for 2)</p></div>
+                    <div class="menu-item"><h4>Hugo Special Quesadilla</h4><p>Double stacked tortilla stuffed with mexican sausage and chicken topped with lettuce, tomato and sour cream. (For 1)</p></div>
+                    <div class="menu-item"><h4>Quesadilla Grande</h4><p>A 10 inch quesadilla with your choice of fajita chicken or steak. Served with rice and beans.</p></div>
+                    <div class="menu-item"><h4>Los Arcos Especial Quesadilla</h4><p>Grilled chicken, chorizo, bacon, ham and onions, pineapple and poblano pepper. Topped with cheese sauce. (For 1, for 2)</p></div>
                 </div>
             </div>
         </div>
@@ -581,6 +629,7 @@
                 <p>Phone: +1 (770) 691-7045</p>
                 <p>6031 Main St</p>
                 <p>Lula, GA 30554</p>
+                <p>United States</p>
             </div>
             <div>
                 <h3>Working Hours</h3>
@@ -609,31 +658,4 @@
             });
         });
 
-        // --- SLIDESHOW LOGIC ---
-        let slideIndex = 1;
-        let slideTimer;
-
-        showSlides(slideIndex);
-
-        function autoPlay() {
-            slideTimer = setInterval(function(){
-                slideIndex++;
-                showSlides(slideIndex);
-            }, 6000);
-        }
-
-        autoPlay(); 
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("review-slide");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slides[slideIndex-1].style.display = "block";  
-        }
-    </script>
-</body>
-</html>
+        // --- SLIDESHOW LOGIC
